@@ -1,0 +1,97 @@
+<%- include('../../partials/header.ejs'); %>
+
+<%- include('../../partials/navbar.ejs'); %>
+
+<body>
+    
+    <div class="container">
+        <div class="card mt-4">
+            <div class="card-header">
+                    <h3><i class="fas fa-user mr-2"></i>Cadastro de usuário</h3>
+            </div>
+            <div class="card-body">
+              
+              <%  if(  passwrong.failed == true ){  %>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Senhas digitadas não são iguais!</strong> Digite a senha novamente.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <% } %> 
+
+              <%  if( passwrong.success == false  ){  %>
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Usuário salvo com sucesso!</strong> 
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+  
+                <% } %> 
+
+                <form action="/users/create" method="post" class="form-row">
+                  <%= passwrong.failed %><%= passwrong.success %>
+
+                    <div class="form-group col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text" ><i class="fas fa-signature mr-1"></i><strong>Nome</strong></div>
+                            </div>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" required>  
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text" ><i class="fas fa-signature mr-1"></i><strong>sobrenome</strong></div>
+                            </div>
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite seu sobrenome" required>  
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text"><i class="fas fa-at mr-1"> </i><strong>E-mail</strong> </div>
+                            </div>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="usuario@exemplo.com" required>
+                          </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text"><i class="fas fa-lock mr-1"></i><strong>digite a Senha</strong> </div>
+                            </div>
+                            <input class="form-control" type="password" name="password" id="password" placeholder="Senha" minlength="6" required>
+                          </div>
+                    </div>
+                   
+                    <div class="form-group col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text"><i class="fas fa-lock mr-1"></i><strong>Repita a senha</strong> </div>
+                            </div>
+                            <input class="form-control" type="password" name="repeatpass" id="repeatpass" placeholder="Repita a senha" minlength="6" required> 
+                          </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <button type="submit" class="btn btn-sm btn-outline-success"><i class="fas fa-save mr-1"></i>Cadastrar</button>
+                    </div>
+                   
+                </form>
+                
+            
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<%- include('../../partials/footer.ejs'); %>

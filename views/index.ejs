@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs'); %>
+<%- include('partials/homenavbar.ejs'); %>
+<body>
+   <div class="container">
+      <hr>
+      <div class="jumbotron">
+         <h1 class="display-4">Bem vindo!</h1>
+         <p class="lead">Esse é seu blog Pessoal, aqui você pode falar sobre oque quiser.</p>
+         <hr class="my-4">
+
+         <a class="btn btn-outline-primary btn-lg" href="#" role="button"> <i class="fas fa-user-cog mr-1"></i> Painel de controle</a>
+       </div>
+
+      <%  articles.forEach( article => { %>
+          <div class="card mt-3">
+             <div class="card-header">
+                  <h2 style="float: left;"><%= article.title %></h2>
+                  <span class="text-secondary" style="float: right; font-size: x-small;"><%= article.createdAt %></span>
+             </div>
+             <div class="card-body">
+               <a class="btn btn-sm btn-success" title="Ler artigo" href="/<%=article.slug%>" ><i class="far fa-newspaper mr-1"></i> Ler artigo</a>
+             </div>
+          </div>  
+      <% }) %> 
+      <hr>
+      <div class="row">
+         <div class="col col-12">
+            <a href="/articles/page/1" style="float: right; text-decoration: none;">Proxima<i class="fas fa-forward ml-1"></i></a>
+         </div>
+        
+      </div>
+      <hr>
+   </div>
+</body>
+
+<%- include('partials/footer.ejs'); %>
